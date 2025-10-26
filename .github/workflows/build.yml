@@ -1,0 +1,44 @@
+# Expo React Native GitHub Pages Deployment
+name: build
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: build
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: install dependencies
+        run: npm i
+
+      - name: build
+        run: npm run build
+
+      - name: setup webpage
+        uses: actions/configure-pages@v4
+
+      - name: upload assets
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+      - name: deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4

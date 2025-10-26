@@ -1,10 +1,10 @@
 {
   "expo": {
     "name": "delta-io",
-    "slug": "delta-io",
-    "version": "1.0.0",
+    "slug": "/",
+    "version": "0.1.1",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/triangle-128.png",
     "scheme": "deltaio",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -22,8 +22,9 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
+      "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/triangle-128.png"
     },
     "plugins": [
       "expo-router",
@@ -42,7 +43,8 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": true,
+      "baseUrl": "/delta-io"
     }
   }
 }
