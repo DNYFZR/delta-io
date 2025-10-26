@@ -25,18 +25,17 @@ export default function Bar(chartProps: ChartProps) {
       height={Dimensions.get("window").height * chartProps.config.heightFactor}
       yAxisLabel=""
       yAxisSuffix={` ${chartProps.config.yLabel}`}
-      showValuesOnTopOfBars={false}
       chartConfig={{
-        decimalPlaces: 0,
+        fillShadowGradient: "rgb(20, 130, 200)",
+        fillShadowGradientOpacity: 1,
+        color: (opacity = 1) => `rgba(64, 64, 64, ${opacity})`,
         labelColor: () => "white",
+        decimalPlaces: 0,
         propsForLabels: {
           fontFamily: "tahoma",
           fontSize: 14,
           fontWeight: 600,
         },
-        fillShadowGradient: "rgb(20, 130, 200)",
-        fillShadowGradientOpacity: 1,
-        color: (opacity = 1) => `rgba(64, 64, 64, ${opacity})`,
       }}
     />
   );

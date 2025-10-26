@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import Icon from "@/components/tools/Icon";
 import NavBar from "@/components/Navigation";
 import Select from "@/components/tools/SelectBox";
-import Bar from "@/components/charts/ChartsBar";
+import Line from "@/components/charts/ChartsLine";
 
 interface CarbonProps {
   data: [
@@ -79,7 +79,7 @@ export default function CarbonIntensity() {
         </View>
 
         <View style={css.col}>
-          <Bar
+          <Line
             {...{
               data: {
                 labels: labels,
