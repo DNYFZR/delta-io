@@ -16,7 +16,7 @@ const CSS = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "black",
     borderRadius: 16,
-    minWidth: 20,
+    minWidth: 30,
     maxHeight: "75%",
     overflowY: "auto",
   },
