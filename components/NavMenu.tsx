@@ -15,8 +15,8 @@ const CSS = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "black",
     borderRadius: 16,
-    minWidth: Dimensions.get("screen").width * 0.25,
-    maxHeight: Dimensions.get("screen").height * 0.75,
+    minWidth: Dimensions.get("window").width * 0.25,
+    maxHeight: Dimensions.get("window").height * 0.75,
     overflowY: "auto",
   },
   button: {
@@ -30,8 +30,8 @@ const CSS = StyleSheet.create({
     minHeight: 30,
   },
   image: {
-    width: Dimensions.get("screen").width * 0.03,
-    height: Dimensions.get("screen").width * 0.03,
+    width: Dimensions.get("window").width * 0.03,
+    height: Dimensions.get("window").width * 0.03,
   },
   icon: {
     position: "fixed",
