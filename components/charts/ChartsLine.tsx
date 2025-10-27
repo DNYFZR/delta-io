@@ -35,10 +35,15 @@ export default function Line(chartProps: ChartProps) {
         style: {
           borderRadius: 16,
         },
+        propsForLabels: {
+          fontFamily: "tahoma",
+          fontSize: 12,
+          fontWeight: 600,
+        },
         propsForDots: {
           r: "2",
-          strokeWidth: "2",
-          stroke: "blue",
+          strokeWidth: "4",
+          stroke: "rgb(20, 130, 200)",
         },
       }}
       bezier={true}

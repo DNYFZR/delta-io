@@ -1,5 +1,5 @@
 import css from "@/constants/style";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 import NavBar from "@/components/Navigation";
 import Icon from "@/components/tools/Icon";
@@ -10,6 +10,7 @@ export default function Weather() {
     <View style={css.app}>
       <Icon />
       <NavBar />
+      <Text style={css.heading}>SEPA Rainfall</Text>
       <Rainfall widthFactor={0.8} heightFactor={0.6} />
     </View>
   );

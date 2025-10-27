@@ -46,11 +46,15 @@ export default function Operations() {
       <NavBar />
 
       {/* Select Asset */}
-      <Select
-        optionsArray={["Ayr", "Gailes", "Irvine"]}
-        selected={selected}
-        setSelected={setSelected}
-      />
+      <View style={css.row}>
+        <Text style={css.text}>Asset : </Text>
+        <Select
+          optionsArray={["Ayr", "Gailes", "Irvine"]}
+          selected={selected}
+          setSelected={setSelected}
+        />
+      </View>
+
       {/* Operational Data */}
       <View style={css.col}>
         <Text style={css.text}>Flow</Text>

@@ -10,6 +10,9 @@ export default function Home() {
       <Icon />
       <NavBar />
       <Text style={css.heading}>DELTA-IO</Text>
+      <Text style={css.text}>
+        Select a tab above to access relevant data trends, or the user guide
+      </Text>
     </View>
   );
 }

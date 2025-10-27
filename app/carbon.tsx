@@ -65,11 +65,10 @@ export default function CarbonIntensity() {
     <View style={css.app}>
       <Icon />
       <NavBar />
-      <Text style={css.heading}>Fuel Mix</Text>
-      <Text style={css.text}>( CO2 Intensity : {carbonData} )</Text>
+      <Text style={css.heading}>Carbon Intensity</Text>
 
-      <View style={css.row}>
-        <View style={css.col}>
+      <View style={css.col}>
+        <View style={css.row}>
           <Text style={css.text}>Select Grid</Text>
           <Select
             optionsArray={["North Scotland", "South Scotland"]}
@@ -77,6 +76,7 @@ export default function CarbonIntensity() {
             setSelected={setSelectedRegion}
           />
         </View>
+        <Text style={css.text}>( CO2 Intensity : {carbonData} )</Text>
 
         <View style={css.col}>
           <Line
