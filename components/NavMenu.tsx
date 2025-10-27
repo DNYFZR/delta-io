@@ -17,7 +17,7 @@ const CSS = StyleSheet.create({
     backgroundColor: "black",
     borderRadius: 16,
     minWidth: 20,
-    maxHeight: 75,
+    maxHeight: "75%",
     overflowY: "auto",
   },
   button: {
