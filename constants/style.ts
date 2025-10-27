@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 const css = StyleSheet.create({
   app: {
@@ -7,15 +7,6 @@ const css = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  },
-  nav: {
-    width: "100%",
-    backgroundColor: "rgb(20, 130, 200)",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    padding: 8,
   },
   row: {
     display: "flex",
@@ -38,7 +29,7 @@ const css = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 600,
     textAlign: "center",
     maxWidth: "90%",
@@ -46,12 +37,12 @@ const css = StyleSheet.create({
   selectbox: {
     backgroundColor: "black",
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     textAlign: "center",
-
+    padding: 8,
     borderRadius: 8,
     borderColor: "black",
-    minWidth: 300,
+    minWidth: 200,
   },
   button: {
     backgroundColor: "rgb(20, 130, 200)",
@@ -62,16 +53,6 @@ const css = StyleSheet.create({
     fontWeight: 600,
     minWidth: "5%",
     minHeight: 30,
-  },
-  image: {
-    width: Dimensions.get("window").width * 0.025,
-    height: Dimensions.get("window").width * 0.025,
-  },
-  icon: {
-    position: "absolute",
-    top: 10,
-    left: 10,
-    zIndex: 99,
   },
 });
 

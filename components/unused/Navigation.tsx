@@ -1,7 +1,28 @@
-import css from "@/constants/style";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useRouter } from "expo-router";
 import Button from "@/components/tools/Button";
+
+const css = StyleSheet.create({
+  nav: {
+    width: "100%",
+    backgroundColor: "rgb(20, 130, 200)",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: 8,
+  },
+  button: {
+    backgroundColor: "rgb(20, 130, 200)",
+    borderRadius: 8,
+    padding: 6,
+    textAlign: "center",
+    justifyContent: "center",
+    fontWeight: 600,
+    minWidth: "5%",
+    minHeight: 30,
+  },
+});
 
 export default function NavBar() {
   const router = useRouter();

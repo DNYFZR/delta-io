@@ -63,7 +63,7 @@ export default function Rainfall({ widthFactor, heightFactor }: RainProps) {
     <View style={css.col}>
       {stationArray.length > 0 ? (
         <View style={css.row}>
-          <Text style={css.text}>SEPA Rainfall Station :</Text>
+          <Text style={css.text}>Rainfall Station :</Text>
           <Select
             optionsArray={stationArray.map((v) => v.station_name)}
             selected={null}
