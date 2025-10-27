@@ -3,11 +3,11 @@ import { Dimensions, StyleSheet } from "react-native";
 const css = StyleSheet.create({
   app: {
     overflowY: "auto",
-    overflowX: "hidden",
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
+    paddingLeft: "10%",
   },
   nav: {
     width: "100%",
