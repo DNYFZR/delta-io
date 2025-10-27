@@ -10,7 +10,7 @@ const css = StyleSheet.create({
     alignItems: "center",
   },
   nav: {
-    width: Dimensions.get("window").width,
+    width: "100%",
     backgroundColor: "rgb(20, 130, 200)",
     display: "flex",
     flexDirection: "row",
