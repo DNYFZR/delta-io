@@ -2,8 +2,7 @@ import css from "@/constants/style";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
-import NavBar from "@/components/Navigation";
-import Icon from "@/components/tools/Icon";
+import NavMenu from "@/components/NavMenu";
 import Select from "@/components/tools/SelectBox";
 import Line from "@/components/charts/ChartsLine";
 
@@ -42,8 +41,7 @@ export default function Operations() {
 
   return (
     <View style={css.app}>
-      <Icon />
-      <NavBar />
+      <NavMenu />
 
       {/* Select Asset */}
       <View style={css.row}>

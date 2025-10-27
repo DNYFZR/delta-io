@@ -1,13 +1,11 @@
 import css from "@/constants/style";
-import NavBar from "@/components/Navigation";
 import { Text, View } from "react-native";
-import Icon from "@/components/tools/Icon";
+import NavMenu from "@/components/NavMenu";
 
 export default function UserGuide() {
   return (
     <View style={css.app}>
-      <Icon />
-      <NavBar />
+      <NavMenu />
       <Text style={css.heading}>User Guide</Text>
       <Text style={css.text}>
         This application allows users to view trends from various open APIs :

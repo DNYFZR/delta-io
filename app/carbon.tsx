@@ -1,10 +1,9 @@
 import css from "@/constants/style";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import Icon from "@/components/tools/Icon";
-import NavBar from "@/components/Navigation";
 import Select from "@/components/tools/SelectBox";
 import Line from "@/components/charts/ChartsLine";
+import NavMenu from "@/components/NavMenu";
 
 interface CarbonProps {
   data: [
@@ -63,8 +62,7 @@ export default function CarbonIntensity() {
 
   return (
     <View style={css.app}>
-      <Icon />
-      <NavBar />
+      <NavMenu />
       <Text style={css.heading}>Carbon Intensity</Text>
 
       <View style={css.col}>

@@ -1,17 +1,14 @@
 import css from "@/constants/style";
 import { Text, View } from "react-native";
-
-import NavBar from "@/components/Navigation";
-import Icon from "@/components/tools/Icon";
+import NavMenu from "@/components/NavMenu";
 
 export default function Home() {
   return (
     <View style={css.app}>
-      <Icon />
-      <NavBar />
+      <NavMenu />
       <Text style={css.heading}>DELTA-IO</Text>
       <Text style={css.text}>
-        Select a tab above to access relevant data trends, or the user guide
+        Use the triangle menu icon to access app data trends / user guide
       </Text>
     </View>
   );
