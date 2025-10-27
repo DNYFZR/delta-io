@@ -1,10 +1,11 @@
-import { Dimensions, Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import Button from "@/components/tools/Button";
 import { useState } from "react";
 
 const CSS = StyleSheet.create({
   container: {
+    position: "fixed",
     zIndex: 99,
   },
   menu: {
@@ -15,8 +16,8 @@ const CSS = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "black",
     borderRadius: 16,
-    minWidth: Dimensions.get("window").width * 0.25,
-    maxHeight: Dimensions.get("window").height * 0.75,
+    minWidth: 20,
+    maxHeight: 75,
     overflowY: "auto",
   },
   button: {
@@ -30,8 +31,8 @@ const CSS = StyleSheet.create({
     minHeight: 30,
   },
   image: {
-    width: Dimensions.get("window").width * 0.03,
-    height: Dimensions.get("window").width * 0.03,
+    width: 30,
+    height: 30,
   },
   icon: {
     position: "fixed",
