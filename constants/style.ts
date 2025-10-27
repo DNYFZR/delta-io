@@ -5,9 +5,8 @@ const css = StyleSheet.create({
     overflowY: "auto",
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
-    paddingLeft: "10%",
   },
   nav: {
     width: "100%",
@@ -35,7 +34,7 @@ const css = StyleSheet.create({
     textAlign: "center",
     fontWeight: 800,
     fontSize: 22,
-    padding: 2,
+    padding: 8,
   },
   text: {
     color: "white",

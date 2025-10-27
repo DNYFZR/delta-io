@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const CSS = StyleSheet.create({
   container: {
-    position: "fixed",
     zIndex: 99,
+    paddingRight: 6,
   },
   menu: {
     top: 60,
