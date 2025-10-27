@@ -48,7 +48,7 @@ export default function Line(chartProps: ChartProps) {
       }}
       bezier={true}
       style={{
-        marginVertical: 8,
+        marginVertical: 4,
         borderRadius: 12,
       }}
     />

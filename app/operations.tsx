@@ -60,8 +60,8 @@ export default function Operations() {
           {...{
             data: flowData,
             config: {
-              widthFactor: 0.8,
-              heightFactor: 0.3,
+              widthFactor: 0.9,
+              heightFactor: 0.35,
               yLabel: "l/s",
             },
           }}
@@ -73,8 +73,8 @@ export default function Operations() {
           {...{
             data: levelData,
             config: {
-              widthFactor: 0.8,
-              heightFactor: 0.3,
+              widthFactor: 0.9,
+              heightFactor: 0.4,
               yLabel: "m",
             },
           }}

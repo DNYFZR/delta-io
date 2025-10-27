@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import css from "@/constants/style";
 import Line from "@/components/charts/ChartsLine";
 import Select from "@/components/tools/SelectBox";
@@ -62,17 +62,20 @@ export default function Rainfall({ widthFactor, heightFactor }: RainProps) {
   return (
     <View style={css.col}>
       {stationArray.length > 0 ? (
-        <Select
-          optionsArray={stationArray.map((v) => v.station_name)}
-          selected={null}
-          setSelected={(x) =>
-            setStationID(
-              stationArray
-                .filter((v) => v.station_name === x)[0]
-                .station_no.toString(),
-            )
-          }
-        />
+        <View style={css.row}>
+          <Text style={css.text}>SEPA Rainfall Station :</Text>
+          <Select
+            optionsArray={stationArray.map((v) => v.station_name)}
+            selected={null}
+            setSelected={(x) =>
+              setStationID(
+                stationArray
+                  .filter((v) => v.station_name === x)[0]
+                  .station_no.toString(),
+              )
+            }
+          />
+        </View>
       ) : null}
 
       {stationData.length > 0 ? (

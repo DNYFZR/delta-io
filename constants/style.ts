@@ -41,18 +41,18 @@ const css = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: 600,
-    padding: 6,
     textAlign: "center",
+    maxWidth: "90%",
   },
   selectbox: {
     backgroundColor: "black",
     color: "white",
     fontSize: 18,
     textAlign: "center",
-    padding: 6,
+
     borderRadius: 8,
     borderColor: "black",
-    minWidth: 100,
+    minWidth: 300,
   },
   button: {
     backgroundColor: "rgb(20, 130, 200)",

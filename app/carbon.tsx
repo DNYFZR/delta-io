@@ -63,34 +63,31 @@ export default function CarbonIntensity() {
   return (
     <View style={css.app}>
       <NavMenu />
-      <Text style={css.heading}>Carbon Intensity</Text>
 
       <View style={css.col}>
         <View style={css.row}>
-          <Text style={css.text}>Select Grid</Text>
+          <Text style={css.text}>Network Area :</Text>
           <Select
             optionsArray={["North Scotland", "South Scotland"]}
             selected={selectedRegion}
             setSelected={setSelectedRegion}
           />
         </View>
-        <Text style={css.text}>( CO2 Intensity : {carbonData} )</Text>
 
-        <View style={css.col}>
-          <Line
-            {...{
-              data: {
-                labels: labels,
-                datasets: [{ data: data }],
-              },
-              config: {
-                widthFactor: 0.8,
-                heightFactor: 0.5,
-                yLabel: "%",
-              },
-            }}
-          />
-        </View>
+        <Line
+          {...{
+            data: {
+              labels: labels,
+              datasets: [{ data: data }],
+            },
+            config: {
+              widthFactor: 0.9,
+              heightFactor: 0.7,
+              yLabel: "%",
+            },
+          }}
+        />
+        <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
       </View>
     </View>
   );
