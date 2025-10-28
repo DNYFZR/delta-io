@@ -18,17 +18,19 @@ interface ChartProps {
 }
 
 export default function Bar(chartProps: ChartProps) {
+  const fillColor = "rgb(20, 130, 200)";
   return (
     <BarChart
       data={chartProps.data}
       width={Dimensions.get("window").width * chartProps.config.widthFactor}
       height={Dimensions.get("window").height * chartProps.config.heightFactor}
+      withInnerLines={false}
       yAxisLabel=""
       yAxisSuffix={` ${chartProps.config.yLabel}`}
       chartConfig={{
-        fillShadowGradient: "rgb(20, 130, 200)",
+        fillShadowGradientFromOffset: 1,
         fillShadowGradientOpacity: 1,
-        color: (opacity = 1) => `rgba(64, 64, 64, ${opacity})`,
+        color: () => fillColor,
         labelColor: () => "white",
         decimalPlaces: 0,
         propsForLabels: {

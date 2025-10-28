@@ -50,7 +50,7 @@ export default function Rainfall({ widthFactor, heightFactor }: RainProps) {
     async function getData() {
       if (stationID !== "") {
         const res = await fetch(
-          `https://www2.sepa.org.uk/Rainfall/api/month/${stationID}?all=true`,
+          `https://www2.sepa.org.uk/Rainfall/api/hourly/${stationID}?format=json`,
         );
         let output: DataObject[] = await res.json();
         setStationData(output);
@@ -63,7 +63,7 @@ export default function Rainfall({ widthFactor, heightFactor }: RainProps) {
     <View style={css.col}>
       {stationArray.length > 0 ? (
         <View style={css.row}>
-          <Text style={css.text}>Rainfall Station :</Text>
+          <Text style={css.text}>Hourly Rainfall :</Text>
           <Select
             optionsArray={stationArray.map((v) => v.station_name)}
             selected={null}
@@ -83,8 +83,8 @@ export default function Rainfall({ widthFactor, heightFactor }: RainProps) {
           {...{
             data: {
               labels: stationData.map((v, i) => {
-                if (i === 0 || i % 10 === 0 || i === stationData.length - 1) {
-                  return v.Timestamp.toString().replaceAll(" 20", "-");
+                if (i === 0 || i % 10 === 0) {
+                  return v.Timestamp.toString();
                 }
                 return "";
               }),

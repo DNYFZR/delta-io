@@ -50,7 +50,11 @@ export default function CarbonIntensity() {
         const data: CarbonProps = await req.json();
         if (data) {
           setCarbonData(data.data[0].data[0].intensity.index);
-          setLables(data.data[0].data[0].generationmix.map((v, _) => v.fuel));
+          setLables(
+            data.data[0].data[0].generationmix.map((v, _) =>
+              v.fuel.toUpperCase(),
+            ),
+          );
           setData(
             data.data[0].data[0].generationmix.map((v, _) => Number(v.perc)),
           );

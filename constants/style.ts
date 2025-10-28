@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 const css = StyleSheet.create({
   app: {
@@ -27,12 +27,19 @@ const css = StyleSheet.create({
     fontSize: 22,
     padding: 8,
   },
+  textBox: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    paddingLeft: Dimensions.get("screen").width * 0.01,
+  },
   text: {
     color: "white",
     fontSize: 16,
     fontWeight: 600,
     textAlign: "center",
     maxWidth: "90%",
+    paddingBottom: 8,
   },
   selectbox: {
     backgroundColor: "black",
