@@ -1,4 +1,4 @@
-import { Dimensions } from "react-native";
+import { Dimensions, View } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
 interface ChartData {
@@ -17,28 +17,33 @@ interface ChartProps {
   config: ChartConfig;
 }
 
+const CONFIG = {
+  fillShadowGradientFromOffset: 1,
+  fillShadowGradientOpacity: 1,
+  color: () => "rgb(20, 130, 200)",
+  labelColor: () => "white",
+  decimalPlaces: 0,
+  propsForLabels: {
+    fontFamily: "tahoma",
+    fontSize: 14,
+    fontWeight: 600,
+  },
+};
+
 export default function Bar(chartProps: ChartProps) {
-  const fillColor = "rgb(20, 130, 200)";
   return (
-    <BarChart
-      data={chartProps.data}
-      width={Dimensions.get("window").width * chartProps.config.widthFactor}
-      height={Dimensions.get("window").height * chartProps.config.heightFactor}
-      withInnerLines={false}
-      yAxisLabel=""
-      yAxisSuffix={` ${chartProps.config.yLabel}`}
-      chartConfig={{
-        fillShadowGradientFromOffset: 1,
-        fillShadowGradientOpacity: 1,
-        color: () => fillColor,
-        labelColor: () => "white",
-        decimalPlaces: 0,
-        propsForLabels: {
-          fontFamily: "tahoma",
-          fontSize: 14,
-          fontWeight: 600,
-        },
-      }}
-    />
+    <View>
+      <BarChart
+        data={chartProps.data}
+        chartConfig={CONFIG}
+        width={Dimensions.get("window").width * chartProps.config.widthFactor}
+        height={
+          Dimensions.get("window").height * chartProps.config.heightFactor
+        }
+        withInnerLines={false}
+        yAxisLabel=""
+        yAxisSuffix={` ${chartProps.config.yLabel}`}
+      />
+    </View>
   );
 }

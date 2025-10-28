@@ -61,27 +61,29 @@ export default function NavMenu() {
           <Button
             name="Home"
             style={CSS.button}
-            onPress={() => router.navigate("/")}
+            onPress={() => router.dismissTo("/")}
           />
           <Button
             name="Operations"
             style={CSS.button}
-            onPress={() => router.navigate("/operations")}
+            onPress={() => router.dismissTo("/operations")}
           />
           <Button
             name="Weather"
             style={CSS.button}
-            onPress={() => router.navigate("/weather")}
+            onPress={() => router.dismissTo("/weather")}
           />
           <Button
             name="Carbon"
             style={CSS.button}
-            onPress={() => router.navigate("/carbon")}
+            onPress={() => {
+              router.dismissTo("/carbon");
+            }}
           />
           <Button
             name="Guide"
             style={CSS.button}
-            onPress={() => router.navigate("/guide")}
+            onPress={() => router.dismissTo("/guide")}
           />
         </View>
       ) : null}

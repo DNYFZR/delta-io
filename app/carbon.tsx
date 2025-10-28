@@ -1,9 +1,10 @@
 import css from "@/constants/style";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import Select from "@/components/tools/SelectBox";
-import Line from "@/components/charts/ChartsLine";
 import NavMenu from "@/components/NavMenu";
+import Select from "@/components/tools/SelectBox";
+// import Line from "@/components/charts/ChartsLine";
+import Bar from "@/components/charts/ChartsBar";
 
 interface CarbonProps {
   data: [
@@ -78,19 +79,21 @@ export default function CarbonIntensity() {
           />
         </View>
 
-        <Line
-          {...{
-            data: {
-              labels: labels,
-              datasets: [{ data: data }],
-            },
-            config: {
-              widthFactor: 0.9,
-              heightFactor: 0.7,
-              yLabel: "%",
-            },
-          }}
-        />
+        {data.length > 0 ? (
+          <Bar
+            {...{
+              data: {
+                labels: labels,
+                datasets: [{ data: data }],
+              },
+              config: {
+                widthFactor: 0.9,
+                heightFactor: 0.7,
+                yLabel: "%",
+              },
+            }}
+          />
+        ) : null}
         <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
       </View>
     </View>
