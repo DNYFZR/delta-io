@@ -94,19 +94,21 @@ export default function CarbonIntensity() {
           ))}
         </View>
 
-        <Bar
-          {...{
-            data: {
-              labels: labels,
-              datasets: [{ data: data }],
-            },
-            config: {
-              widthFactor: 0.9,
-              heightFactor: 0.6,
-              yLabel: "%",
-            },
-          }}
-        />
+        {data.length !== 0 ? (
+          <Bar
+            {...{
+              data: {
+                labels: labels,
+                datasets: [{ data: data }],
+              },
+              config: {
+                widthFactor: 0.9,
+                heightFactor: 0.6,
+                yLabel: "%",
+              },
+            }}
+          />
+        ) : null}
       </View>
     </View>
   );
