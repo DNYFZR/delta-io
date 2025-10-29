@@ -32,11 +32,15 @@ interface CarbonProps {
 }
 
 export default function CarbonIntensity() {
-  const [selectedRegion, setSelectedRegion] =
-    useState<string>("North Scotland");
+  const [selectedRegion, setSelectedRegion] = useState<string>("");
   const [carbonData, setCarbonData] = useState<string>("");
   const [labels, setLables] = useState<string[]>([]);
   const [data, setData] = useState<number[]>([]);
+
+  // Initial target
+  useEffect(() => {
+    setSelectedRegion("North Scotland");
+  }, []);
 
   // Run on user selection
   useEffect(() => {
@@ -50,12 +54,10 @@ export default function CarbonIntensity() {
         if (data) {
           setCarbonData(data.data[0].data[0].intensity.index);
           setLables(
-            data.data[0].data[0].generationmix.map((v, _) =>
-              v.fuel.toUpperCase(),
-            ),
+            data.data[0].data[0].generationmix.map((v) => v.fuel.toUpperCase()),
           );
           setData(
-            data.data[0].data[0].generationmix.map((v, _) => Number(v.perc)),
+            data.data[0].data[0].generationmix.map((v) => Number(v.perc)),
           );
         }
       }
@@ -65,36 +67,36 @@ export default function CarbonIntensity() {
 
   return (
     <View style={css.app}>
-      <View style={css.col}>
-        <View style={css.row}>
-          <Text style={css.heading}>Network Area :</Text>
-          <Select
-            optionsArray={["North Scotland", "South Scotland"]}
-            selected={selectedRegion}
-            setSelected={setSelectedRegion}
-          />
-        </View>
+      <View style={css.row}>
+        <Text style={css.heading}>Network Area :</Text>
+        <Select
+          optionsArray={["North Scotland", "South Scotland"]}
+          selected={selectedRegion}
+          setSelected={setSelectedRegion}
+        />
+      </View>
 
-        <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
+      {data.length !== 0 ? (
+        <View style={css.col}>
+          <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
 
-        {/* Table Headers */}
-        <View style={css.row}>
-          {labels.map((label, index) => (
-            <View key={index} style={css.cellHeader}>
-              <Text style={[css.text]}>{label}</Text>
-            </View>
-          ))}
-        </View>
+          {/* Table */}
+          <View style={css.row}>
+            {labels.map((label, index) => (
+              <View key={index} style={css.cellHeader}>
+                <Text style={[css.text]}>{label}</Text>
+              </View>
+            ))}
+          </View>
 
-        <View style={css.row}>
-          {data.map((value, index) => (
-            <View key={index} style={css.cell}>
-              <Text style={css.text}>{value} %</Text>
-            </View>
-          ))}
-        </View>
+          <View style={css.row}>
+            {data.map((value, index) => (
+              <View key={index} style={css.cell}>
+                <Text style={css.text}>{value} %</Text>
+              </View>
+            ))}
+          </View>
 
-        {data.length !== 0 ? (
           <Bar
             {...{
               data: {
@@ -108,8 +110,8 @@ export default function CarbonIntensity() {
               },
             }}
           />
-        ) : null}
-      </View>
+        </View>
+      ) : null}
     </View>
   );
 }

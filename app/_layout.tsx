@@ -14,11 +14,20 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <NavMenu />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="operations" />
-        <Stack.Screen name="weather" />
-        <Stack.Screen name="carbon" getId={() => String(Math.random())} />
-        <Stack.Screen name="guide" />
+        <Stack.Screen name="index" getId={({ params }) => String(Date.now())} />
+        <Stack.Screen
+          name="operations"
+          getId={({ params }) => String(Date.now())}
+        />
+        <Stack.Screen
+          name="weather"
+          getId={({ params }) => String(Date.now())}
+        />
+        <Stack.Screen
+          name="carbon"
+          getId={({ params }) => String(Date.now())}
+        />
+        <Stack.Screen name="guide" getId={({ params }) => String(Date.now())} />
       </Stack>
     </ThemeProvider>
   );

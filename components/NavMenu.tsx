@@ -5,7 +5,6 @@ import { Link } from "expo-router";
 const CSS = StyleSheet.create({
   container: {
     zIndex: 99,
-    position: "relative",
   },
   menu: {
     top: 60,
