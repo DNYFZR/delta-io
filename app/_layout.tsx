@@ -13,17 +13,12 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <NavMenu />
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="operations" options={{ headerShown: false }} />
-        <Stack.Screen name="weather" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="carbon"
-          // getID required to force barchart to render colors
-          getId={({ params }) => String(Date.now())}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="guide" options={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="operations" />
+        <Stack.Screen name="weather" />
+        <Stack.Screen name="carbon" getId={() => String(Math.random())} />
+        <Stack.Screen name="guide" />
       </Stack>
     </ThemeProvider>
   );
