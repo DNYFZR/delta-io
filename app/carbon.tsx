@@ -1,9 +1,7 @@
 import css from "@/constants/style";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import NavMenu from "@/components/NavMenu";
 import Select from "@/components/tools/SelectBox";
-// import Line from "@/components/charts/ChartsLine";
 import Bar from "@/components/charts/ChartsBar";
 
 interface CarbonProps {
@@ -67,11 +65,9 @@ export default function CarbonIntensity() {
 
   return (
     <View style={css.app}>
-      <NavMenu />
-
       <View style={css.col}>
         <View style={css.row}>
-          <Text style={css.text}>Network Area :</Text>
+          <Text style={css.heading}>Network Area :</Text>
           <Select
             optionsArray={["North Scotland", "South Scotland"]}
             selected={selectedRegion}
@@ -79,22 +75,38 @@ export default function CarbonIntensity() {
           />
         </View>
 
-        {data.length > 0 ? (
-          <Bar
-            {...{
-              data: {
-                labels: labels,
-                datasets: [{ data: data }],
-              },
-              config: {
-                widthFactor: 0.9,
-                heightFactor: 0.7,
-                yLabel: "%",
-              },
-            }}
-          />
-        ) : null}
         <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
+
+        {/* Table Headers */}
+        <View style={css.row}>
+          {labels.map((label, index) => (
+            <View key={index} style={css.cellHeader}>
+              <Text style={[css.text]}>{label}</Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={css.row}>
+          {data.map((value, index) => (
+            <View key={index} style={css.cell}>
+              <Text style={css.text}>{value} %</Text>
+            </View>
+          ))}
+        </View>
+
+        <Bar
+          {...{
+            data: {
+              labels: labels,
+              datasets: [{ data: data }],
+            },
+            config: {
+              widthFactor: 0.9,
+              heightFactor: 0.6,
+              yLabel: "%",
+            },
+          }}
+        />
       </View>
     </View>
   );

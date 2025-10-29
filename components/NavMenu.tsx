@@ -1,11 +1,11 @@
-import { Image, Text, View, StyleSheet } from "react-native";
-import { useRouter } from "expo-router";
-import Button from "@/components/tools/Button";
 import { useState } from "react";
+import { Image, Text, View, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 
 const CSS = StyleSheet.create({
   container: {
     zIndex: 99,
+    position: "relative",
   },
   menu: {
     top: 60,
@@ -41,7 +41,6 @@ const CSS = StyleSheet.create({
 });
 
 export default function NavMenu() {
-  const router = useRouter();
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (
@@ -58,33 +57,45 @@ export default function NavMenu() {
 
       {showMenu ? (
         <View style={CSS.menu}>
-          <Button
-            name="Home"
+          <Link
             style={CSS.button}
-            onPress={() => router.dismissTo("/")}
-          />
-          <Button
-            name="Operations"
+            href={"/"}
+            onPress={() => setShowMenu(!showMenu)}
+          >
+            Home
+          </Link>
+
+          <Link
             style={CSS.button}
-            onPress={() => router.dismissTo("/operations")}
-          />
-          <Button
-            name="Weather"
+            href={"/operations"}
+            onPress={() => setShowMenu(!showMenu)}
+          >
+            Operations
+          </Link>
+
+          <Link
             style={CSS.button}
-            onPress={() => router.dismissTo("/weather")}
-          />
-          <Button
-            name="Carbon"
+            href={"/weather"}
+            onPress={() => setShowMenu(!showMenu)}
+          >
+            Weather
+          </Link>
+
+          <Link
             style={CSS.button}
-            onPress={() => {
-              router.dismissTo("/carbon");
-            }}
-          />
-          <Button
-            name="Guide"
+            href={"/carbon"}
+            onPress={() => setShowMenu(!showMenu)}
+          >
+            Carbon
+          </Link>
+
+          <Link
             style={CSS.button}
-            onPress={() => router.dismissTo("/guide")}
-          />
+            href={"/guide"}
+            onPress={() => setShowMenu(!showMenu)}
+          >
+            Guide
+          </Link>
         </View>
       ) : null}
     </View>

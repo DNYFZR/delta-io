@@ -1,13 +1,102 @@
 import css from "@/constants/style";
-import { View } from "react-native";
-import NavMenu from "@/components/NavMenu";
-import Rainfall from "@/components/pages/Rainfall";
+import { Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import Line from "@/components/charts/ChartsLine";
+import Select from "@/components/tools/SelectBox";
+
+interface StationObject {
+  station_name: string;
+  station_latitude: number;
+  station_longitude: number;
+  station_no: number;
+  station_id: number;
+  itemDate: Date;
+  itemValue: number;
+  itemValue2: number;
+  accumRange: number;
+  ts_id: number;
+  oldtime: number;
+  id: number;
+}
+
+interface DataObject {
+  Timestamp: Date;
+  Value: number;
+}
 
 export default function Weather() {
+  const widthFactor = 0.95;
+  const heightFactor = 0.8;
+  const [stationArray, setStationArray] = useState<StationObject[]>([]);
+  const [stationData, setStationData] = useState<DataObject[]>([]);
+  const [stationID, setStationID] = useState<string>("");
+
+  // Run on load
+  useEffect(() => {
+    async function getStations() {
+      const res = await fetch("https://www2.sepa.org.uk/Rainfall/api/Stations");
+      const output: StationObject[] = await res.json();
+      setStationArray(output);
+      setStationID(output[0].station_no.toString());
+    }
+    getStations();
+  }, []);
+
+  // Run on user selection
+  useEffect(() => {
+    async function getData() {
+      if (stationID !== "") {
+        const res = await fetch(
+          `https://www2.sepa.org.uk/Rainfall/api/hourly/${stationID}?format=json`,
+        );
+        let output: DataObject[] = await res.json();
+        setStationData(output);
+      }
+    }
+    getData();
+  }, [stationID]);
+
   return (
     <View style={css.app}>
-      <NavMenu />
-      <Rainfall widthFactor={0.9} heightFactor={0.7} />
+      <View style={css.col}>
+        {stationArray.length > 0 ? (
+          <View style={css.row}>
+            <Text style={css.heading}>Hourly Rainfall :</Text>
+            <Select
+              optionsArray={stationArray.map((v) => v.station_name)}
+              selected={null}
+              setSelected={(x) =>
+                setStationID(
+                  stationArray
+                    .filter((v) => v.station_name === x)[0]
+                    .station_no.toString(),
+                )
+              }
+            />
+          </View>
+        ) : null}
+
+        {stationData.length > 0 ? (
+          <Line
+            {...{
+              data: {
+                labels: stationData.map((v, i) => {
+                  if (i === 0 || i % 6 === 0 || i === stationData.length - 1) {
+                    return v.Timestamp.toString().slice(0, -3).split(" ")[1];
+                  }
+                  return "";
+                }),
+                datasets: [{ data: stationData.map((v, _) => v.Value) }],
+              },
+              config: {
+                widthFactor: widthFactor,
+                heightFactor: heightFactor,
+                yLabel: "mm",
+              },
+            }}
+          />
+        ) : null}
+      </View>
     </View>
   );
 }

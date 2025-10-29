@@ -2,7 +2,6 @@ import css from "@/constants/style";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
-import NavMenu from "@/components/NavMenu";
 import Select from "@/components/tools/SelectBox";
 import Line from "@/components/charts/ChartsLine";
 
@@ -41,11 +40,9 @@ export default function Operations() {
 
   return (
     <View style={css.app}>
-      <NavMenu />
-
       {/* Select Asset */}
       <View style={css.row}>
-        <Text style={css.text}>Asset : </Text>
+        <Text style={css.heading}>Asset : </Text>
         <Select
           optionsArray={["Ayr", "Gailes", "Irvine"]}
           selected={selected}
@@ -60,7 +57,7 @@ export default function Operations() {
           {...{
             data: flowData,
             config: {
-              widthFactor: 0.9,
+              widthFactor: 0.95,
               heightFactor: 0.35,
               yLabel: "l/s",
             },
@@ -73,8 +70,8 @@ export default function Operations() {
           {...{
             data: levelData,
             config: {
-              widthFactor: 0.9,
-              heightFactor: 0.4,
+              widthFactor: 0.95,
+              heightFactor: 0.35,
               yLabel: "m",
             },
           }}
