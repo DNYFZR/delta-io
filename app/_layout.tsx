@@ -18,6 +18,7 @@ export default function RootLayout() {
       <Tabs
         screenOptions={{
           tabBarIconStyle: { display: "none" },
+          tabBarLabelStyle: { fontSize: 13 },
           headerShown: false,
         }}
       >
