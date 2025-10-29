@@ -24,6 +24,7 @@ export default function Bar(chartProps: ChartProps) {
       chartConfig={{
         fillShadowGradientFromOffset: 1,
         fillShadowGradientOpacity: 1,
+        fillShadowGradient: "rgb(20, 130, 200)",
         color: () => "rgb(20, 130, 200)",
         labelColor: () => "white",
         decimalPlaces: 0,

@@ -1,4 +1,7 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+
+const textColor = "white";
+const highlightColor = "rgb(20, 130, 200)";
 
 const css = StyleSheet.create({
   app: {
@@ -7,23 +10,58 @@ const css = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
+    paddingTop: 16,
   },
   row: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    padding: 8,
+    // padding: 8,
   },
   col: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    // padding: 8,
+  },
+  heading: {
+    color: highlightColor,
+    textAlign: "center",
+    fontWeight: 700,
+    fontSize: 16,
     padding: 8,
+  },
+  text: {
+    color: textColor,
+    fontSize: 14,
+    fontWeight: 600,
+    textAlign: "center",
+    maxWidth: "90%",
+    padding: 8,
+  },
+  selectbox: {
+    backgroundColor: "black",
+    color: textColor,
+    fontSize: 14,
+    textAlign: "center",
+    padding: 8,
+    borderRadius: 8,
+    minWidth: 200,
+  },
+  button: {
+    backgroundColor: highlightColor,
+    borderRadius: 8,
+    padding: 6,
+    textAlign: "center",
+    justifyContent: "center",
+    fontWeight: 600,
+    minWidth: "5%",
+    minHeight: 30,
   },
   cellHeader: {
     display: "flex",
     borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
+    borderBottomColor: textColor,
     minWidth: 120,
     alignItems: "center",
     justifyContent: "center",
@@ -33,47 +71,6 @@ const css = StyleSheet.create({
     minWidth: 120,
     alignItems: "center",
     justifyContent: "center",
-  },
-  heading: {
-    color: "rgb(20, 130, 200)",
-    textAlign: "center",
-    fontWeight: 700,
-    fontSize: 16,
-    padding: 8,
-  },
-  textBox: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    paddingLeft: Dimensions.get("screen").width * 0.01,
-  },
-  text: {
-    color: "white",
-    fontSize: 14,
-    fontWeight: 600,
-    textAlign: "center",
-    maxWidth: "90%",
-    padding: 8,
-  },
-  selectbox: {
-    backgroundColor: "black",
-    color: "white",
-    fontSize: 14,
-    textAlign: "center",
-    padding: 8,
-    borderRadius: 8,
-    borderColor: "black",
-    minWidth: 200,
-  },
-  button: {
-    backgroundColor: "rgb(20, 130, 200)",
-    borderRadius: 8,
-    padding: 6,
-    textAlign: "center",
-    justifyContent: "center",
-    fontWeight: 600,
-    minWidth: "5%",
-    minHeight: 30,
   },
 });
 

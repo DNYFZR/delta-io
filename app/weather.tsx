@@ -25,7 +25,7 @@ interface DataObject {
 }
 
 export default function Weather() {
-  const widthFactor = 0.95;
+  const widthFactor = 0.9;
   const heightFactor = 0.8;
   const [stationArray, setStationArray] = useState<StationObject[]>([]);
   const [stationData, setStationData] = useState<DataObject[]>([]);
@@ -58,45 +58,43 @@ export default function Weather() {
 
   return (
     <View style={css.app}>
-      <View style={css.col}>
-        {stationArray.length > 0 ? (
-          <View style={css.row}>
-            <Text style={css.heading}>Hourly Rainfall :</Text>
-            <Select
-              optionsArray={stationArray.map((v) => v.station_name)}
-              selected={null}
-              setSelected={(x) =>
-                setStationID(
-                  stationArray
-                    .filter((v) => v.station_name === x)[0]
-                    .station_no.toString(),
-                )
-              }
-            />
-          </View>
-        ) : null}
-
-        {stationData.length > 0 ? (
-          <Line
-            {...{
-              data: {
-                labels: stationData.map((v, i) => {
-                  if (i === 0 || i % 6 === 0 || i === stationData.length - 1) {
-                    return v.Timestamp.toString().slice(0, -3).split(" ")[1];
-                  }
-                  return "";
-                }),
-                datasets: [{ data: stationData.map((v, _) => v.Value) }],
-              },
-              config: {
-                widthFactor: widthFactor,
-                heightFactor: heightFactor,
-                yLabel: "mm",
-              },
-            }}
+      {stationArray.length > 0 ? (
+        <View style={css.row}>
+          <Text style={css.heading}>Hourly Rainfall :</Text>
+          <Select
+            optionsArray={stationArray.map((v) => v.station_name)}
+            selected={null}
+            setSelected={(x) =>
+              setStationID(
+                stationArray
+                  .filter((v) => v.station_name === x)[0]
+                  .station_no.toString(),
+              )
+            }
           />
-        ) : null}
-      </View>
+        </View>
+      ) : null}
+
+      {stationData.length > 0 ? (
+        <Line
+          {...{
+            data: {
+              labels: stationData.map((v, i) => {
+                if (i === 0 || i % 6 === 0 || i === stationData.length - 1) {
+                  return v.Timestamp.toString().slice(0, -3).split(" ")[1];
+                }
+                return "";
+              }),
+              datasets: [{ data: stationData.map((v, _) => v.Value) }],
+            },
+            config: {
+              widthFactor: widthFactor,
+              heightFactor: heightFactor,
+              yLabel: "mm",
+            },
+          }}
+        />
+      ) : null}
     </View>
   );
 }

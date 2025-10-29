@@ -51,32 +51,28 @@ export default function Operations() {
       </View>
 
       {/* Operational Data */}
-      <View style={css.col}>
-        <Text style={css.text}>Flow</Text>
-        <Line
-          {...{
-            data: flowData,
-            config: {
-              widthFactor: 0.95,
-              heightFactor: 0.35,
-              yLabel: "l/s",
-            },
-          }}
-        />
-      </View>
-      <View style={css.col}>
-        <Text style={css.text}>Level</Text>
-        <Line
-          {...{
-            data: levelData,
-            config: {
-              widthFactor: 0.95,
-              heightFactor: 0.35,
-              yLabel: "m",
-            },
-          }}
-        />
-      </View>
+      <Text style={css.text}>Flow</Text>
+      <Line
+        {...{
+          data: flowData,
+          config: {
+            widthFactor: 0.9,
+            heightFactor: 0.33,
+            yLabel: "l/s",
+          },
+        }}
+      />
+      <Text style={css.text}>Level</Text>
+      <Line
+        {...{
+          data: levelData,
+          config: {
+            widthFactor: 0.9,
+            heightFactor: 0.33,
+            yLabel: "m",
+          },
+        }}
+      />
     </View>
   );
 }

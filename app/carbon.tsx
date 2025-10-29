@@ -37,15 +37,10 @@ export default function CarbonIntensity() {
   const [labels, setLables] = useState<string[]>([]);
   const [data, setData] = useState<number[]>([]);
 
-  // Initial target
-  useEffect(() => {
-    setSelectedRegion("North Scotland");
-  }, []);
-
-  // Run on user selection
+  // Call API with user config
   useEffect(() => {
     async function getData() {
-      const regionID = selectedRegion === "North Scotland" ? 1 : 2;
+      const regionID = selectedRegion !== "South Scotland" ? 1 : 2;
       const req = await fetch(
         `https://api.carbonintensity.org.uk/regional/regionid/${regionID}`,
       );
@@ -77,7 +72,7 @@ export default function CarbonIntensity() {
       </View>
 
       {data.length !== 0 ? (
-        <View style={css.col}>
+        <View>
           <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
 
           {/* Table */}

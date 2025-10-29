@@ -3,8 +3,8 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { Stack } from "expo-router";
-import NavMenu from "@/components/NavMenu";
+import Head from "expo-router/head";
+import { Tabs } from "expo-router";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export default function RootLayout() {
@@ -12,23 +12,25 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <NavMenu />
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" getId={({ params }) => String(Date.now())} />
-        <Stack.Screen
-          name="operations"
-          getId={({ params }) => String(Date.now())}
-        />
-        <Stack.Screen
-          name="weather"
-          getId={({ params }) => String(Date.now())}
-        />
-        <Stack.Screen
+      <Head>
+        <title>DELTA-IO</title>
+      </Head>
+      <Tabs
+        screenOptions={{
+          tabBarIconStyle: { display: "none" },
+          headerShown: false,
+        }}
+      >
+        <Tabs.Screen name="index" options={{ title: "HOME" }} />
+        <Tabs.Screen name="operations" options={{ title: "PROCESS" }} />
+        <Tabs.Screen name="weather" options={{ title: "WEATHER" }} />
+        <Tabs.Screen
           name="carbon"
-          getId={({ params }) => String(Date.now())}
+          options={{ title: "ENERGY" }}
+          // getId={() => String(Date.now())}
         />
-        <Stack.Screen name="guide" getId={({ params }) => String(Date.now())} />
-      </Stack>
+        <Tabs.Screen name="guide" options={{ title: "GUIDE" }} />
+      </Tabs>
     </ThemeProvider>
   );
 }
