@@ -72,7 +72,7 @@ export default function CarbonIntensity() {
       </View>
 
       {data.length !== 0 ? (
-        <View>
+        <View style={css.col}>
           <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
 
           {/* Table */}

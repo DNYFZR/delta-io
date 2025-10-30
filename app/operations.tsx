@@ -59,6 +59,7 @@ export default function Operations() {
             widthFactor: 0.9,
             heightFactor: 0.33,
             yLabel: "l/s",
+            decimalPlaces: 0,
           },
         }}
       />
@@ -70,6 +71,7 @@ export default function Operations() {
             widthFactor: 0.9,
             heightFactor: 0.33,
             yLabel: "m",
+            decimalPlaces: 0,
           },
         }}
       />

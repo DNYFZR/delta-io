@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 const textColor = "white";
 const highlightColor = "rgb(20, 130, 200)";
@@ -62,13 +62,13 @@ const css = StyleSheet.create({
     display: "flex",
     borderBottomWidth: 1,
     borderBottomColor: textColor,
-    minWidth: 125,
+    minWidth: Dimensions.get("window").width * 0.08,
     alignItems: "center",
     justifyContent: "center",
   },
   cell: {
     display: "flex",
-    minWidth: 125,
+    minWidth: Dimensions.get("window").width * 0.08,
     alignItems: "center",
     justifyContent: "center",
   },

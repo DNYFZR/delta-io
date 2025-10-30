@@ -10,6 +10,7 @@ interface ChartConfig {
   widthFactor: number;
   heightFactor: number;
   yLabel: string;
+  decimalPlaces?: number;
 }
 
 interface ChartProps {
@@ -29,7 +30,7 @@ export default function Line(chartProps: ChartProps) {
       yAxisSuffix={` ${chartProps.config.yLabel}`}
       chartConfig={{
         backgroundColor: "black",
-        decimalPlaces: 0, // optional, defaults to 2dp
+        decimalPlaces: chartProps.config.decimalPlaces,
         color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
         style: {
