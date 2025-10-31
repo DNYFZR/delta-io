@@ -16,13 +16,14 @@ const css = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    // padding: 8,
+    paddingLeft: 6,
+    paddingRight: 6,
   },
   col: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    // padding: 8,
+    paddingBottom: 6,
   },
   heading: {
     color: highlightColor,

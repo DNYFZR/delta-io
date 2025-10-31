@@ -75,6 +75,20 @@ export default function CarbonIntensity() {
         <View style={css.col}>
           <Text style={css.text}>Carbon Intensity Rating : {carbonData} </Text>
 
+          <Bar
+            {...{
+              data: {
+                labels: labels,
+                datasets: [{ data: data }],
+              },
+              config: {
+                widthFactor: 0.9,
+                heightFactor: 0.6,
+                yLabel: "%",
+              },
+            }}
+          />
+
           {/* Table */}
           <View style={css.row}>
             {labels.map((label, index) => (
@@ -91,20 +105,6 @@ export default function CarbonIntensity() {
               </View>
             ))}
           </View>
-
-          <Bar
-            {...{
-              data: {
-                labels: labels,
-                datasets: [{ data: data }],
-              },
-              config: {
-                widthFactor: 0.9,
-                heightFactor: 0.6,
-                yLabel: "%",
-              },
-            }}
-          />
         </View>
       ) : null}
     </View>
