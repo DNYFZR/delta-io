@@ -11,7 +11,7 @@ export default function Home() {
           height: Dimensions.get("screen").height * 0.5,
           borderRadius: 16,
         }}
-        source={require("@/assets/dial-io.jpg")}
+        source={require("@/assets/dial-io.png")}
       />
     </View>
   );

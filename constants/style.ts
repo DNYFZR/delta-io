@@ -25,6 +25,12 @@ const css = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 6,
   },
+  aligned: {
+    display: "flex",
+    alignItems: "flex-start",
+    width: "95%",
+    paddingBottom: 3,
+  },
   heading: {
     color: highlightColor,
     textAlign: "center",

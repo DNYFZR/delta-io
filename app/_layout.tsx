@@ -25,11 +25,7 @@ export default function RootLayout() {
         <Tabs.Screen name="index" options={{ title: "HOME" }} />
         <Tabs.Screen name="operations" options={{ title: "PROCESS" }} />
         <Tabs.Screen name="weather" options={{ title: "WEATHER" }} />
-        <Tabs.Screen
-          name="carbon"
-          options={{ title: "ENERGY" }}
-          // getId={() => String(Date.now())}
-        />
+        <Tabs.Screen name="carbon" options={{ title: "ENERGY" }} />
         <Tabs.Screen name="guide" options={{ title: "GUIDE" }} />
       </Tabs>
     </ThemeProvider>

@@ -32,7 +32,7 @@ interface CarbonProps {
 }
 
 export default function CarbonIntensity() {
-  const [selectedRegion, setSelectedRegion] = useState<string>("");
+  const [selectedRegion, setSelectedRegion] = useState<string>("South Scotland");
   const [carbonData, setCarbonData] = useState<string>("");
   const [labels, setLables] = useState<string[]>([]);
   const [data, setData] = useState<number[]>([]);
