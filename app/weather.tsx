@@ -6,22 +6,22 @@ import Select from "@/components/tools/SelectBox";
 
 interface StationObject {
   station_name: string;
-  station_latitude: number;
-  station_longitude: number;
-  station_no: number;
-  station_id: number;
-  itemDate: Date;
-  itemValue: number;
-  itemValue2: number;
-  accumRange: number;
-  ts_id: number;
-  oldtime: number;
-  id: number;
+  station_no: string;
+  station_id: string;
+  station_latitude: string;
+  station_longitude: string;
 }
 
 interface DataObject {
-  Timestamp: Date;
+  Timestamp: string;
   Value: number;
+}
+
+interface DataResponse {
+  ts_id: string;
+  rows: string;
+  columns: string;
+  data: string[];
 }
 
 export default function Weather() {
@@ -34,39 +34,46 @@ export default function Weather() {
   // Run on load
   useEffect(() => {
     async function getStations() {
-      const res = await fetch("https://www2.sepa.org.uk/Rainfall/api/Stations");
-      const output: StationObject[] = await res.json();
+      const apiCall = await fetch("https://timeseries.sepa.org.uk/KiWIS/KiWIS?request=getStationList&stationgroup_id=279593&format=json");
+      let res: string[][] = await apiCall.json();
+      res = res.slice(1);
+
+      let output: StationObject[] = res.map(arr => {
+        return Object({
+          "station_name" : arr[0],
+          "station_no": arr[1],
+          "station_id": arr[2],
+          "station_latitude": arr[3],
+          "station_longitude": arr[4],
+        })
+      });
       setStationArray(output);
-      setStationID(output[0].station_no.toString());
+      setStationID(output[0].station_no);
     }
     getStations();
   }, []);
 
   // Run on user selection
   useEffect(() => {
-    function parseCustomDate(str: string) {
-      const [datePart, timePart] = str.split(" ");
-      const [dd, mm, yyyy] = datePart.split("/");
-      const [hh, min, ss] = timePart.split(":");
-
-      return new Date(`${yyyy}-${mm}-${dd}T${hh}:${min}:${ss}Z`);
-    }
-
     async function getData() {
       if (stationID !== "") {
-        const res = await fetch(
-          `https://www2.sepa.org.uk/Rainfall/api/hourly/${stationID}?format=json`,
+        const callApi = await fetch(
+          `https://timeseries.sepa.org.uk/KiWIS/KiWIS?request=gettimeseriesvalues&ts_path=1/${stationID}/RE/Hour.Total&period=P1D&format=json`
         );
-        const output: DataObject[] = await res.json();
+        const res: DataResponse[] = await callApi.json();
 
-        const yd = Date.now() - 24 * 3600 * 1000;
-        const output_24h: DataObject[] = output
-          .map((v) => ({
-            ...v,
-            Timestamp: parseCustomDate(String(v.Timestamp)),
-          }))
-          .filter((v) => v.Timestamp.getTime() >= yd);
-        setStationData(output_24h);
+        if(Number(res[0].rows) > 0){
+          let output: DataObject[] = res[0].data.map(arr => {
+            return Object({
+              "Timestamp" : new Date(arr[0]).toLocaleTimeString(),
+              "Value": arr[1],
+            })
+          });
+
+          setStationData(output);
+        } else {
+          setStationData([])
+        }
       }
     }
     getData();
@@ -76,28 +83,27 @@ export default function Weather() {
     <View style={css.app}>
       {stationArray.length > 0 ? (
         <View style={css.row}>
-          <Text style={css.heading}>Rainfall (24h) :</Text>
+          <Text style={css.heading}>Rainfall (24h) : </Text>
           <Select
             optionsArray={stationArray.map((v) => v.station_name)}
             selected={null}
             setSelected={(x) =>
               setStationID(
                 stationArray
-                  .filter((v) => v.station_name === x)[0]
-                  .station_no.toString(),
+                  .filter((v) => v.station_name === x)[0].station_no,
               )
             }
           />
         </View>
       ) : null}
-      {/*<Text style={css.text}>{JSON.stringify(stationData)}</Text>*/}
+
       {stationData.length > 0 ? (
         <Line
           {...{
             data: {
               labels: stationData.map((v, i) => {
-                if (i === 0 || i % 6 === 0 || i === stationData.length - 1) {
-                  return v.Timestamp.toLocaleTimeString(); //.slice(0, -3).split(" ")[1];
+                if (i === 0 || i % 3 === 0 || i === stationData.length - 1) {
+                  return v.Timestamp;
                 }
                 return "";
               }),
@@ -107,11 +113,11 @@ export default function Weather() {
               widthFactor: widthFactor,
               heightFactor: heightFactor,
               yLabel: "mm",
-              decimalPlaces: 1,
+              decimalPlaces: 2,
             },
           }}
         />
-      ) : null}
+      ) : <Text style={css.text}>No Data Available For Selected Station...</Text>}
     </View>
   );
 }
