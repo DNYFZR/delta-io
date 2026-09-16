@@ -42,8 +42,8 @@ export default function Line(chartProps: ChartProps) {
           fontWeight: 600,
         },
         propsForDots: {
-          r: "2",
-          strokeWidth: "4",
+          r: "1",
+          strokeWidth: "3",
           stroke: "rgb(20, 130, 200)",
         },
       }}
